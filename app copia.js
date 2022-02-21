@@ -26,30 +26,6 @@ const slide = [
   },
 ]
 
-// const items = [
-//   'img/01.jpg',
-//   'img/02.jpg',
-//   'img/03.jpg',
-//   'img/04.jpg',
-//   'img/05.jpg'
-// ];
-
-// const title = [
-//   'Svezia',
-//   'Svizzera',
-//   'Gran Bretagna',
-//   'Germania',
-//   'Paradise'
-// ]
-
-// const text = [
-//   'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
-//   'Lorem ipsum',
-//   'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
-//   'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
-//   'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
-// ]
-
 let currentIndex = 0
 
 // cerco dove andare a inserire l'immagine + titolo + descrizione nell'html
@@ -61,11 +37,10 @@ const prev = document.querySelector('.go-up')
 // creo un ciclo per andare ad creare le varie varianti
 // attivo il ciclo al click della freccia
 
-
-  for (let i = 0; i < slide.length; i++ ){
-    const image = slide[i].image;
-    const title = slide[i].title;
-    const description = slide[i].description;
+slide.forEach( el => {
+  const image = el.image;
+  const title = el.title;
+  const description = el.description;
 
   const item = `
     <div class="item">
@@ -76,8 +51,8 @@ const prev = document.querySelector('.go-up')
       </div>
     </div>
     ` 
-    slideWrapper.innerHTML += item
-  }
+  slideWrapper.innerHTML += item
+} )
   
 const itemImage = [...document.getElementsByClassName('item')]
 itemImage[currentIndex].classList.add('active')
@@ -113,9 +88,8 @@ next.addEventListener('click', function(){
   itemControl[currentIndex].classList.add('active')
 })
 
-
-for (let i=0; i < slide.length; i++){
-  const image = slide[i].image;
+slide.forEach( el => {
+  const image = el.image;
 
   const navImage = `
   <div class="controls ">
@@ -123,7 +97,7 @@ for (let i=0; i < slide.length; i++){
   </div>  
   `  
   controlImage.innerHTML += navImage
-}  
+})
 
 const itemControl = [...document.getElementsByClassName('image')]
 itemControl[currentIndex].classList.add('active')
