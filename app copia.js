@@ -37,11 +37,8 @@ const prev = document.querySelector('.go-up')
 // creo un ciclo per andare ad creare le varie varianti
 // attivo il ciclo al click della freccia
 
-slide.forEach( el => {
-  const image = el.image;
-  const title = el.title;
-  const description = el.description;
-
+slide.forEach( ({title, description, image}) => {
+  
   const item = `
     <div class="item">
       <img src="${image}" alt="">
@@ -52,7 +49,7 @@ slide.forEach( el => {
     </div>
     ` 
   slideWrapper.innerHTML += item
-} )
+})
   
 const itemImage = [...document.getElementsByClassName('item')]
 itemImage[currentIndex].classList.add('active')
@@ -88,9 +85,8 @@ next.addEventListener('click', function(){
   itemControl[currentIndex].classList.add('active')
 })
 
-slide.forEach( el => {
-  const image = el.image;
-
+slide.forEach( ({image}) => {
+ 
   const navImage = `
   <div class="controls ">
   <img class="image" src="${image}" alt="">
