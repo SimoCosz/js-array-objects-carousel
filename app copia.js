@@ -2,28 +2,28 @@ const slide = [
   {
     title: 'Svezia',
     description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
-    image: 'img/01.jpg',
-  }
+    image: 'img copia/01.jpg',
+  },
   {
     title: 'Svizzera',
     description: 'Lorem ipsum',
-    image: 'img/02.jpg',
-  }
+    image: 'img copia/02.jpg',
+  },
   {
     title: 'Gran Bretagna',
     description:   'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
-    image: 'img/03.jpg',
-  }
+    image: 'img copia/03.jpg',
+  },
   {
     title: 'Germania',
     description:   'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
-    image: 'img/04.jpg',
-  }
+    image: 'img copia/04.jpg',
+  },
   {
     title: 'Paradise',
     description:   'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
-    image: 'img/05.jpg',
-  }
+    image: 'img copia/05.jpg',
+  },
 ]
 
 // const items = [
@@ -62,13 +62,17 @@ const prev = document.querySelector('.go-up')
 // attivo il ciclo al click della freccia
 
 
-  for (let i = 0; i < items.length; i++ ){
+  for (let i = 0; i < slide.length; i++ ){
+    const image = slide[i].image;
+    const title = slide[i].title;
+    const description = slide[i].description;
+
   const item = `
     <div class="item">
-      <img src="${items[i]}" alt="">
+      <img src="${image}" alt="">
       <div class="description">
-        <h6 class="titolo">${title[i]}</h6>
-        <p class="paragrafo">${text[i]}</p>
+        <h6 class="titolo">${title}</h6>
+        <p class="paragrafo">${description}</p>
       </div>
     </div>
     ` 
@@ -87,7 +91,7 @@ prev.addEventListener('click', function(){
     itemImage[currentIndex].classList.add('active')
     itemControl[currentIndex].classList.add('active')
   } else {
-    currentIndex = items.length - 1
+    currentIndex = slide.length - 1
   }
   itemImage[currentIndex].classList.add('active')
   itemControl[currentIndex].classList.add('active')
@@ -98,7 +102,7 @@ next.addEventListener('click', function(){
   itemImage[currentIndex].classList.remove('active')
   itemControl[currentIndex].classList.remove('active')
   
-  if (currentIndex < items.length - 1){
+  if (currentIndex < slide.length - 1){
     currentIndex++
     itemImage[currentIndex].classList.add('active')
     itemControl[currentIndex].classList.add('active')
@@ -110,10 +114,12 @@ next.addEventListener('click', function(){
 })
 
 
-for (let i=0; i < items.length; i++){
+for (let i=0; i < slide.length; i++){
+  const image = slide[i].image;
+
   const navImage = `
   <div class="controls ">
-  <img class="image" src="${items[i]}" alt="">
+  <img class="image" src="${image}" alt="">
   </div>  
   `  
   controlImage.innerHTML += navImage
