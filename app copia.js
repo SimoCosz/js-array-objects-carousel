@@ -26,74 +26,78 @@ const slide = [
   },
 ]
 
-// VARIABILI
-let currentIndex = 0;
-const slideWrapper = document.querySelector('.slide-wrapper');
-const controlImage = document.querySelector('.control-image');
-const next = document.querySelector('.go-down');
-const prev = document.querySelector('.go-up');
-const itemImage = [...document.getElementsByClassName('item')];
-const itemControl = [...document.getElementsByClassName('image')];
 
-// SLIDE DI PARTENZA
-itemControl[currentIndex].classList.add('active');
-itemImage[currentIndex].classList.add('active');
+
+// VARIABILI
+let currentIndex = 0
+const slideWrapper = document.querySelector('.slide-wrapper')
+const controlImage = document.querySelector('.control-image')
+const next = document.querySelector('.go-down')
+const prev = document.querySelector('.go-up')
 
 // ELEMENTO SLIDE
+
 slide.forEach( ({title, description, image}) => {
   
   const item = `
   <div class="item">
   <img src="${image}" alt="">
   <div class="description">
-        <h6 class="titolo">${title}</h6>
-        <p class="paragrafo">${description}</p>
-      </div>
-    </div>
-    `;
-    slideWrapper.innerHTML += item;
-  })
-
-  // ANTEPRIMA SLIDE
-  
-  slide.forEach( ({image}) => {
-   
-    const navImage = `
-    <div class="controls ">
-    <img class="image" src="${image}" alt="">
-    </div>  
-    `;  
-    controlImage.innerHTML += navImage;
-  })
+  <h6 class="titolo">${title}</h6>
+  <p class="paragrafo">${description}</p>
+  </div>
+  </div>
+  ` 
+  slideWrapper.innerHTML += item
+})
 
 // CONTROLLO SLIDE
+
+const itemImage = [...document.getElementsByClassName('item')]
+itemImage[currentIndex].classList.add('active')
+
 prev.addEventListener('click', function(){
-  itemImage[currentIndex].classList.remove('active');
-  itemControl[currentIndex].classList.remove('active');
+  itemImage[currentIndex].classList.remove('active')
+  itemControl[currentIndex].classList.remove('active')
 
   if( currentIndex > 0){
-    currentIndex--;
-    itemImage[currentIndex].classList.add('active');
-    itemControl[currentIndex].classList.add('active');
+    currentIndex--
+    itemImage[currentIndex].classList.add('active')
+    itemControl[currentIndex].classList.add('active')
   } else {
-    currentIndex = slide.length - 1;
+    currentIndex = slide.length - 1
   }
-  itemImage[currentIndex].classList.add('active');
-  itemControl[currentIndex].classList.add('active');
+  itemImage[currentIndex].classList.add('active')
+  itemControl[currentIndex].classList.add('active')
   
 })
 
 next.addEventListener('click', function(){
-  itemImage[currentIndex].classList.remove('active');
-  itemControl[currentIndex].classList.remove('active');
+  itemImage[currentIndex].classList.remove('active')
+  itemControl[currentIndex].classList.remove('active')
   
   if (currentIndex < slide.length - 1){
-    currentIndex++;
-    itemImage[currentIndex].classList.add('active');
-    itemControl[currentIndex].classList.add('active');
+    currentIndex++
+    itemImage[currentIndex].classList.add('active')
+    itemControl[currentIndex].classList.add('active')
   } else {
-    currentIndex = 0;
+    currentIndex = 0
   }
-  itemImage[currentIndex].classList.add('active');
-  itemControl[currentIndex].classList.add('active');
+  itemImage[currentIndex].classList.add('active')
+  itemControl[currentIndex].classList.add('active')
 })
+
+// ELEMENTO ANTEPRIMA
+
+slide.forEach( ({image}) => {
+ 
+  const navImage = `
+  <div class="controls ">
+  <img class="image" src="${image}" alt="">
+  </div>  
+  `  
+  controlImage.innerHTML += navImage
+})
+
+const itemControl = [...document.getElementsByClassName('image')]
+itemControl[currentIndex].classList.add('active')
